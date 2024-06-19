@@ -40,12 +40,12 @@ public class JournalEntryControllerV2 {
         try {
             User user = userService.findByUserName(userName);
             List<JournalEntry> data = user.getJournalEntries();
-            if(data != null && !data.isEmpty()){
+            if(data != null && !data.isEmpty())
                 return new ResponseEntity<>(data, HttpStatus.OK);
-            }
         }catch(Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/id/{journalId}")
