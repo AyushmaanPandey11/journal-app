@@ -61,17 +61,17 @@ public class JournalEntryControllerV2 {
         journalEntryService.deleteById(userId,userName);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @PutMapping("/id/{userId}/{userName}")
+    @PutMapping("/id/{journalId}/{userName}")
     public ResponseEntity<?> UpdateJournalEntryById(
-            @PathVariable ObjectId userId,
+            @PathVariable ObjectId journalId,
             @RequestBody JournalEntry newEntry,
-            @PathVariable String UserName){
-        JournalEntry old = journalEntryService.findById((userId)).orElse(null);
+            @PathVariable String userName){
+        JournalEntry old = journalEntryService.findById((journalId)).orElse(null);
         if(old != null)
         {
             old.setTitle(newEntry.getTitle()!=null && !newEntry.getTitle().isEmpty() ? newEntry.getTitle() : old.getTitle());
             old.setContent(newEntry.getContent()!=null && !newEntry.getContent().isEmpty() ? newEntry.getContent() : old.getContent());
-            journalEntryService.saveEntry(old);
+            journalEntryService.saveEntry(old,userName);
             return new ResponseEntity<>(old,HttpStatus.OK);
         }
         return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
