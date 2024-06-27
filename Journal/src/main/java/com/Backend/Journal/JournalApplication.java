@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-//@EnableMongoRepositories(basePackages = "com.Backend.Journal.repository.JournalEntryRepository")
 public class JournalApplication {
 
 	public static void main(String[] args) {
