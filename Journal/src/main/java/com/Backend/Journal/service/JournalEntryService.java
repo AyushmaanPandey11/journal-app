@@ -29,7 +29,7 @@ public class JournalEntryService {
             journalEntry.setDate(LocalDateTime.now());
             JournalEntry saved = journalEntryRepository.save(journalEntry);
             user.getJournalEntries().add(saved);
-            userService.saveEntry(user);
+            userService.saveUser(user);
         }catch(Exception e){
             throw new RuntimeException("Error of Replication",e);
         }
@@ -45,10 +45,20 @@ public class JournalEntryService {
 
         return journalEntryRepository.findById(id);
     }
-    public void deleteById(ObjectId entryId, String userName){
-        User user = userService.findByUserName(userName);
-        user.getJournalEntries().removeIf(x->x.getId().equals(entryId));
-        userService.saveEntry(user);
-        journalEntryRepository.deleteById(entryId);
+    @Transactional
+    public boolean deleteById(ObjectId entryId, String userName){
+        boolean removed = false;
+        try{
+            User user = userService.findByUserName(userName);
+            removed = user.getJournalEntries().removeIf(x -> x.getId().equals(entryId));
+            if (removed) {
+                userService.saveUser(user);
+                journalEntryRepository.deleteById(entryId);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+            throw new RuntimeException("Error occurred while deleting entry: ",e);
+        }
+        return removed;
     }
 }
