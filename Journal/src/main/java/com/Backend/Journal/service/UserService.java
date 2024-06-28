@@ -1,7 +1,7 @@
 package com.Backend.Journal.service;
 
 
-import com.Backend.Journal.controller.entity.User;
+import com.Backend.Journal.entity.User;
 import com.Backend.Journal.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,11 @@ public class UserService {
     public User saveNewUser(@org.jetbrains.annotations.NotNull User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(List.of("USER"));
+        return user;
+    }
+    public User saveAdmin(@org.jetbrains.annotations.NotNull User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(List.of("USER","ADMIN"));
         return user;
     }
 

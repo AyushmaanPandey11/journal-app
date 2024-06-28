@@ -1,6 +1,6 @@
 package com.Backend.Journal.controller;
 
-import com.Backend.Journal.controller.entity.User;
+import com.Backend.Journal.entity.User;
 import com.Backend.Journal.repository.UserRepository;
 import com.Backend.Journal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

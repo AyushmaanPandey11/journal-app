@@ -1,4 +1,4 @@
-package com.Backend.Journal.controller.entity;
+package com.Backend.Journal.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
 package com.Backend.Journal.controller;
 
-import com.Backend.Journal.controller.entity.JournalEntry;
-import com.Backend.Journal.controller.entity.User;
+import com.Backend.Journal.entity.JournalEntry;
+import com.Backend.Journal.entity.User;
 import com.Backend.Journal.service.JournalEntryService;
 import com.Backend.Journal.service.UserService;
 import org.bson.types.ObjectId;
@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v2/journal")

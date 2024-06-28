@@ -1,6 +1,6 @@
 package com.Backend.Journal.repository;
 
-import com.Backend.Journal.controller.entity.User;
+import com.Backend.Journal.entity.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

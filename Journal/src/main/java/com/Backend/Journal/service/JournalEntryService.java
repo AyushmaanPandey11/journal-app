@@ -1,8 +1,8 @@
 package com.Backend.Journal.service;
 
 
-import com.Backend.Journal.controller.entity.JournalEntry;
-import com.Backend.Journal.controller.entity.User;
+import com.Backend.Journal.entity.JournalEntry;
+import com.Backend.Journal.entity.User;
 import com.Backend.Journal.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
