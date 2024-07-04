@@ -4,10 +4,8 @@ import com.Backend.Journal.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -20,7 +18,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SpringSecurity  {
 
     @Autowired
+    @Lazy
     private UserDetailServiceImpl userDetailService;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws  Exception{
         return http.authorizeHttpRequests(request -> request
@@ -32,10 +32,7 @@ public class SpringSecurity  {
                 .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoding());
-    }
+
     @Bean
     public PasswordEncoder passwordEncoding(){
         return new BCryptPasswordEncoder();

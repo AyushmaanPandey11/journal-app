@@ -1,5 +1,4 @@
 package com.Backend.Journal.service;
-
 import com.Backend.Journal.entity.User;
 import com.Backend.Journal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

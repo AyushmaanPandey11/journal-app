@@ -1,0 +1,23 @@
+#spring.application.name=Journal
+#spring.data.mongodb.uri=
+#  #spring.data.mongodb.uri=mongodb://localhost:27017/journaldb
+#  #spring.data.mongodb.auto-index-creation=true
+#spring.data.mongodb.database=Journal
+
+spring:
+  application:
+    name:Journal
+  data:
+    mongodb:
+      uri: mongodb+srv://ayushmaan1122pandey:FVCA52pHoqpRf46z@cluster0.wjqvz4t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: Journal
+  main:
+    allow-circular-references: true
+
+  security:
+    user :
+      name: user
+      password: 1234ayush
+logging:
+  level:
+    org.springframework.security: DEBUG
