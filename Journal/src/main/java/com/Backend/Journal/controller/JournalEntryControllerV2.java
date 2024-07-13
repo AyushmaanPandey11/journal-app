@@ -66,11 +66,11 @@ public class JournalEntryControllerV2 {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @DeleteMapping("/id/{userId}")
-    public ResponseEntity<?> deleteJournalEntryById(@PathVariable ObjectId userId){
+    @DeleteMapping("/id/{journalId}")
+    public ResponseEntity<?> deleteJournalEntryById(@PathVariable ObjectId journalId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        boolean isDeleted = journalEntryService.deleteById(userId,userName);
+        boolean isDeleted = journalEntryService.deleteById(journalId,userName);
         if(isDeleted){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

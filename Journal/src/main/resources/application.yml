@@ -17,7 +17,7 @@ spring:
   security:
     user :
       name: user
-      password: 1234ayush
+      password: 1234
 logging:
   level:
     org.springframework.security: DEBUG

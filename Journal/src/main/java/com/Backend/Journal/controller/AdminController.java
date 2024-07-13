@@ -5,10 +5,7 @@ import com.Backend.Journal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ public class AdminController {
     }
 
     @PostMapping("/create-admin")
-    public ResponseEntity<?> createAdmin(User user){
+    public ResponseEntity<?> createAdmin(@RequestBody User user){
         User admin = userService.saveAdmin(user);
         if(admin!=null){
             return new ResponseEntity<>(admin,HttpStatus.CREATED);

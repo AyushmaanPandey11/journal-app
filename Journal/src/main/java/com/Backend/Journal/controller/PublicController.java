@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/public")
+@RequestMapping("api/v2/public")
 public class PublicController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class PublicController {
         return "Working Properly";
     }
 
-    @PostMapping("create-user")
+    @PostMapping("/create-user")
     public ResponseEntity<?> createUser(@RequestBody User user){
         try{
             User createdUser = userService.saveNewUser(user);

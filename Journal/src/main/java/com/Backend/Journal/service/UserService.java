@@ -26,12 +26,23 @@ public class UserService {
     public User saveNewUser(@org.jetbrains.annotations.NotNull User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(List.of("USER"));
+        userRepository.save(user);
         return user;
     }
     public User saveAdmin(@org.jetbrains.annotations.NotNull User user){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(List.of("USER","ADMIN"));
-        return user;
+        Optional<User> existingUser = Optional.ofNullable(userRepository.findByUserName(user.getUserName()));
+        if(existingUser.isPresent()){
+            User userToUpdate = existingUser.get();
+            userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
+            userToUpdate.setRoles(List.of("USER","ADMIN"));
+            userRepository.save(userToUpdate);
+            return userToUpdate;
+        } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRoles(List.of("USER","ADMIN"));
+            userRepository.save(user);
+            return user;
+        }
     }
 
     public List<User> getAll(){
