@@ -13,6 +13,17 @@ spring:
       database: Journal
   main:
     allow-circular-references: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 22352015@pondiuni.ac.in
+    password: crhc fzgf oruz ghnh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
   security:
     user :
