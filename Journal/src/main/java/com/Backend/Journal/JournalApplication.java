@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -26,4 +27,8 @@ public class JournalApplication {
 	}
 	// this will return the platformTransactionManager which will implement MongoTransactionManager
 	// MongoDatabase Factory has all function to connect to db for transaction
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
 }
